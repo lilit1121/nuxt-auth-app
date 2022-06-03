@@ -1,7 +1,7 @@
 <template>
   <div class="footer-container">
     <footer class="the-footer">
-      <p><span>Copyright &copy;</span> 2022 Ares</p>
+      <p><span>Copyright &copy;</span> 2022 Lilit</p>
     </footer>
   </div>
 </template>
