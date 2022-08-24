@@ -1,4 +1,9 @@
+const env = require('dotenv').config().parsed
 export default {
+  env: {
+    ...env
+  },
+  
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -36,7 +41,14 @@ export default {
   modules: ['@nuxtjs/axios'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    // extend(config) {
+    //   config.resolve.alias = {
+    //     ...config.resolve.alias,
+    //     '@Models': path.resolve(__dirname, 'core/models'),
+    //   }
+    // }
+  },
   axios: {
     baseURL: process.env.BASE_API_URL,
   },

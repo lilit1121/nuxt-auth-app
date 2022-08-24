@@ -2,28 +2,41 @@
   <div class="wrapper">
     <div class="home-page">
       <h1>ABOUT US</h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit,
-        doloremque assumenda! Quae ab earum incidunt officia placeat qui.
-        Ducimus nisi mollitia culpa ratione voluptas quas vitae. Rerum autem
-        dolores nam ratione quasi blanditiis totam, quae possimus quo
-        repellendus facilis perferendis voluptatum sapiente earum magnam dicta
-        tempore ipsum enim perspiciatis beatae! Sapiente iusto perspiciatis modi
-        blanditiis, hic non omnis. Suscipit in obcaecati rerum perspiciatis
-        quibusdam? Consequuntur, dolores nobis id cupiditate illum aliquid
-        repellendus necessitatibus laudantium illo adipisci expedita,
-        doloremque, fuga quam repellat repudiandae! Reprehenderit ex voluptates,
-        cumque maxime quis nulla, accusantium illo consectetur eligendi dolorum
-        eius aperiam unde doloremque laborum similique fuga molestiae corporis
-        dolores nesciunt. Hic, libero tempore velit cupiditate molestiae est.
-      </p>
+      <img :src="info.url" alt="cats" :width="info.width" :height="info.height">
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+// import { Users } from '@Models'
+
 export default {
   name: 'AboutUs',
+  data() {
+    return {
+      info: {},
+      user: {
+        name: 'Cat',
+        age: 2
+      }
+    }
+  },
+  computed: {
+    ...mapActions({
+      cat: 'cats/getCats'
+    }),
+    // users() {
+    //   const copy = this.user
+    //   return new Users(copy)
+    // }
+  },
+  async mounted(){
+    // this.users(user)
+    await this.cat.then((data) => {
+      this.info = data[0]
+    })
+  }
 }
 </script>
 
